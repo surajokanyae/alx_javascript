@@ -1,7 +1,6 @@
 #!/usr/bin/node
-const prevSquare = require('./5-square');
-class Square extends prevSquare {
-  // Method to print Square instance using given character or 'X'
+const newSquare = require('./5-square');
+class Square extends newSquare {
   charPrint (c = 'X') {
     let row = '';
     let i = 0;
