@@ -2,7 +2,7 @@
 // script that displays the title of the Star Wars movie using API
 const request = require('request');
 const myArgs = process.argv.slice(2);
-const URLstring = 'https://swapi-api.alx-tools.com/api/films/:id' + myArgs[0];
+const URLstring = 'https://swapi-api.alx-tools.com/api/films/' + myArgs[0];
 request(URLstring, function (err, response, body) {
   if (err) {
     console.log(err);
