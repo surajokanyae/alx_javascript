@@ -1,8 +1,14 @@
-#!/usr/bin/node
+const request = require('request');
 
-const request = require ('request');
-const url = process.arg[2];
+const getStatusCode = (url) => {
+  const response = request.get(url);
+  return response.statusCode;
+};
 
-request.get(url, fuction(err, response){
-    console.log('code:', ${response.statuscode});
-});
+const main = () => {
+  const url = process.argv[2];
+  const status = getStatusCode(url);
+  console.log(`code: ${status}`);
+};
+
+main();
