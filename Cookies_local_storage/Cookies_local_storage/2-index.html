@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Login</h2>
+
+<input type="text" id="firstname" placeholder="First name">
+<input type="email" id="email" placeholder="Email">
+
+<button onclick="setCookies()">Log me in</button>
+
+
+<p id="cookies"></p>
+
+<script type="application/javascript">
+    function setCookies() {
+  // Get the values from the text inputs.
+  const firstName = document.getElementById("firstname").value;
+  const email = document.getElementById("email").value;
+
+  // Set the cookies.
+  document.cookie = `firstname=${firstName}; expires=${new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toUTCString()}`;
+  document.cookie = `email=${email}; expires=${new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toUTCString()}`;
+}
+
+function showCookies() {
+  // Get the cookies.
+  const cookies = document.cookie.split("; ");
+
+  // Get the email and firstname cookies.
+  const emailCookie = getCookie("email");
+  const firstnameCookie = getCookie("firstname");
+
+  // Create a paragraph element to display the cookies.
+  const cookiesParagraph = document.createElement("p");
+  cookiesParagraph.textContent = `Email: ${emailCookie} - Firstname: ${firstnameCookie}`;
+
+  // Append the paragraph element to the bottom of the page.
+  document.body.appendChild(cookiesParagraph);
+}
+
+
+  function getCookie(name) {
+  // Get the cookies.
+  const cookies = document.cookie.split("; ");
+
+  // Iterate over the cookies and find the cookie with the given name.
+  for (const cookie of cookies) {
+    const [key, value] = cookie.split("=");
+    if (key === name) {
+      return value;
+    }
+  }
+
+  // If the cookie does not exist, return an empty string.
+  return "";
+}
+
+ </script>
+</body>
+</html>
